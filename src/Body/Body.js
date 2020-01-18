@@ -21,7 +21,7 @@ class Body extends React.Component {
                         aria-label="A hated name"
                     />
                     <InputGroup.Append>
-                        <Button variant="outline-primary">Click me!</Button>
+                        <Button variant="primary">Click me!</Button>
                     </InputGroup.Append>
                 </InputGroup>
                 <Alert variant="dark">

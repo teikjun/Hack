@@ -1,10 +1,12 @@
 import React from 'react';
 import pizza from './pizza.svg';
 import './About.css';
+import Navi from '../Navi/Navi.js';
 
 function About() {
   return (
     <div className="About">
+        <Navi/>
       <header className="About-header">
         
         <img src={pizza} className="About-logo u-bottom-m" alt="logo" />
