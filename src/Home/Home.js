@@ -17,7 +17,7 @@ class Home extends React.Component {
                         aria-label="A hated name"
                     />
                     <InputGroup.Append>
-                        <Button variant="outline-primary">Click me!</Button>
+                        <Button onClick={getInsult} variant="outline-primary">Click me!</Button>
                     </InputGroup.Append>
                 </InputGroup>
                 <Alert variant="dark">
@@ -29,3 +29,34 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+function getInsult() {
+    var client = new HttpClient();
+    client.get("https://insult.mattbas.org/api/insult", function(response) {
+        console.log(response);
+    });
+    alert('Hello!');
+}
+
+
+var HttpClient = function() {
+    this.get = function(theUrl, callback) {
+        var http_request;
+        http_request = new XMLHttpRequest();
+        http_request.onreadystatechange = function() {
+            if (http_request.readyState === 4 && http_request.status === 200)
+                callback(http_request.responseText);
+        };
+        http_request.open("GET", theUrl);
+        http_request.withCredentials = true;
+        http_request.setRequestHeader("Content-Type", "application/json");
+        http_request.send({ "request": "authentication token" });
+        // var xmlHttp = new XMLHttpRequest();
+        // xmlHttp.onreadystatechange = function() { 
+            // if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+            //     callback(xmlHttp.responseText);
+        // }
+        // xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+        // xmlHttp.send(null);
+    }
+}
