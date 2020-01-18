@@ -1,0 +1,66 @@
+.About {
+  text-align: center;
+}
+
+.About-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.u-bottom-m {
+  margin-bottom: 20px;
+}
+
+.u-bottom-s {
+  margin-bottom: 10px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .About-logo {
+    animation: About-logo-spin infinite 20s linear;
+  }
+}
+
+
+.u-top-m   {
+  margin-top: 20px;
+}
+
+.About-header {
+  background-color: #f3f3f3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.About-link {
+  color: #006eff;
+}
+
+@keyframes About-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
