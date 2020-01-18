@@ -13,12 +13,11 @@ class Home extends React.Component {
                 <img className="emoji" src={emoji} alt=""/>
                 <InputGroup className="m-3">
                     <FormControl
-                        placeholder="Recipient's username"
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
+                        placeholder="Name goes here"
+                        aria-label="A hated name"
                     />
                     <InputGroup.Append>
-                        <Button variant="outline-secondary">Button</Button>
+                        <Button variant="outline-primary">Click me!</Button>
                     </InputGroup.Append>
                 </InputGroup>
                 <Alert variant="dark">
