@@ -37,7 +37,7 @@ class Home extends React.Component {
                         aria-label="A hated name"
                     />
                     <InputGroup.Append>
-                        <Button onClick={this.getInsult} variant="outline-primary">Click me!</Button>
+                        <Button onClick={this.getInsult} variant="primary">Click me!</Button>
                     </InputGroup.Append>
                 </InputGroup>
                 <Alert variant="dark">
