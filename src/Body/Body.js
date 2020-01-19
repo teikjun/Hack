@@ -5,31 +5,56 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
-import { bounce } from 'react-animations';
-import styled, { keyframes } from 'styled-components';
 
-const Bounce = styled.div`animation: 2s ${keyframes`${bounce}`} infinite`;
+class Home extends React.Component {
+    state = {
+        name: "You",
+    };
 
-class Body extends React.Component {
+    handleChange = event => {
+        this.setState({ name: event.target.value });
+    };
+
+    getInsult = () => { 
+        var client = new HttpClient();
+        client.get("https://insult.mattbas.org/api/insult", (response) => {
+            response = " is".concat(response.substr(7));
+            response = this.state.name.concat(response);
+            document.getElementById("response").innerHTML = response;
+        });
+    }
+    
     render() {
         return (
-            <div className="container d-flex flex-column justify-content-center align-items-center min-vh-100">
-                <Bounce><img className="emoji" src={emoji} alt=""/></Bounce>
-                <InputGroup className="m-5">
-                    <FormControl
+            <div className="container d-flex flex-column justify-content-center align-items-center">
+                <img className="emoji" src={emoji} alt=""/>
+                <InputGroup className="m-3">
+                    <FormControl onChange={this.handleChange}
                         placeholder="Name goes here"
                         aria-label="A hated name"
                     />
                     <InputGroup.Append>
-                        <Button variant="primary">Click me!</Button>
+                        <Button onClick={this.getInsult} variant="outline-primary">Click me!</Button>
                     </InputGroup.Append>
                 </InputGroup>
                 <Alert variant="dark">
-                    <span>Your Mom</span>
+                    <h1 id="response">Prepare some tissues</h1>
                 </Alert>
             </div>
         )
-    }
+    };
 }
 
-export default Body;
+export default Home;
+
+var HttpClient = function() {
+    this.get = function(theUrl, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() { 
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+        xmlHttp.send(null);
+    }
+}
