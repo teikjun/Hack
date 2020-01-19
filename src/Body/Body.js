@@ -5,6 +5,9 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import styled, { keyframes } from 'styled-components';
+import { bounce } from 'react-animations';
+const Bounce = styled.div`animation: 2s ${keyframes`${bounce}`} infinite`;
 
 class Home extends React.Component {
     state = {
@@ -26,8 +29,8 @@ class Home extends React.Component {
     
     render() {
         return (
-            <div className="container d-flex flex-column justify-content-center align-items-center">
-                <img className="emoji" src={emoji} alt=""/>
+            <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
+                <Bounce><img className="emoji" src={emoji} alt=""/></Bounce>
                 <InputGroup className="m-3">
                     <FormControl onChange={this.handleChange}
                         placeholder="Name goes here"
